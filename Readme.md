@@ -1,10 +1,10 @@
 # Toolbox
 
-Toolbox is a command-line interface (CLI) tool written in Go.It leverages the power of Cobra, a CLI library for Go, to offer a seamless user experience.
+Toolbox is a command-line interface (CLI) tool written in Go. It leverages the power of Cobra, a CLI library for Go, to offer a seamless user experience.
 
 ## Overview
 <p align="center">
-  <img width="612" alt="overview" src="https://github.com/YashPimple/toolbox-cli/assets/97302447/7abeb5d5-bad5-4a97-a250-0d544c881070">
+  <img width="1133" alt="toolbox-img" src="https://github.com/YashPimple/toolbox-cli/assets/97302447/1677eac4-1ef9-4751-9a98-94b49bbad25a">
 </p>
 
 ## Usage
@@ -18,8 +18,13 @@ To use Toolbox, simply execute the following command:
 
 ## Available Commands
 
+- cluster: Create and manage AWS EC2 instances.
 - net: Perform network-related tasks using a comprehensive set of commands.
 - info: Retrieve detailed information about all available commands.
+
+### Cluster Command
+
+The `cluster` command allows you to create and manage AWS EC2 instances. You can create instances and delete instances associated with a cluster.
 
 ## Flags
 - -h, --help: Display the help information for Toolbox.
