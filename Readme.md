@@ -21,6 +21,7 @@ To use Toolbox, simply execute the following command:
 - cluster: Create and manage AWS EC2 instances.
 - net: Perform network-related tasks using a comprehensive set of commands.
 - info: Retrieve detailed information about all available commands.
+- healthcheck: Command that checks health of given domain.
 
 ### Cluster Command
 
