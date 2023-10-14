@@ -19,6 +19,7 @@ var InfoCmd = &cobra.Command{
 
 func init() {
 	InfoCmd.AddCommand(diskusageCmd)
+	InfoCmd.AddCommand(healthcheckCmd)
 
 	// Here you will define your flags and configuration settings.
 
