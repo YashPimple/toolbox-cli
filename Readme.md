@@ -4,7 +4,7 @@ Toolbox is a command-line interface (CLI) tool written in Go. It leverages the p
 
 ## Overview
 <p align="center">
-  <img width="1133" alt="toolbox-img" src="https://github.com/YashPimple/toolbox-cli/assets/97302447/1677eac4-1ef9-4751-9a98-94b49bbad25a">
+  <img width="1133" alt="toolbox-img" src="./Toolbox.png">
 </p>
 
 ## Usage
