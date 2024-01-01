@@ -67,3 +67,7 @@ We welcome contributions to Toolbox! If you would like to contribute, please fol
 
 ## License
 This project is licensed under the MIT License. Please see the LICENSE file for more details.
+
+
+export GOPATH=~/go\nexport GOBIN=$GOPATH/bin\nexport PATH=$PATH:$GOBIN\n
+cobra-cli

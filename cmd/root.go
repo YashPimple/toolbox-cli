@@ -45,8 +45,8 @@ func init() {
 	//add my sub-command palatte
 	rootCmd.AddCommand(info.InfoCmd)
 	rootCmd.AddCommand(net.NetCmd)
-	rootCmd.AddCommand(cluster.Delete)
 	rootCmd.AddCommand(cluster.CmdCreate)
+	rootCmd.AddCommand(cluster.DeleteCmd)
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.Toolbox.yaml)")
 
