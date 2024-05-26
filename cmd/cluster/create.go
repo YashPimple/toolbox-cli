@@ -1,14 +1,19 @@
 package cluster
 
 import (
+	"bufio"
 	"fmt"
 	"os"
+	"strings"
+	"syscall"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
+	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 var (
@@ -25,22 +30,60 @@ var CmdCreate = &cobra.Command{
 	Run:   createEC2Instance,
 }
 
+func readPassword() (string, error) {
+	bytePassword, err := term.ReadPassword(int(syscall.Stdin))
+	if err != nil {
+		return "", err
+	}
+
+	return string(bytePassword), nil
+}
+
 func createEC2Instance(cmd *cobra.Command, args []string) {
+	godotenv.Load()
 
 	fmt.Println("Enter Name of your Cluster:")
-	fmt.Scan(&clusterName)
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error in reading the input:", err)
+		return
+	}
+	clusterName = strings.TrimSpace(input)
+	fmt.Printf("Cluster Name: %s\n", clusterName)
 
 	fmt.Println("Enter AWS Region(us-east-1):")
-	fmt.Scan(&region)
+	awsRegion, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error in Reading th input:", err)
+		return
+	}
+	region = strings.TrimSpace(awsRegion)
 
 	fmt.Println("Enter AWS EC2 Instance Type (e.g., t2.micro):")
-	fmt.Scan(&instanceType)
+	output, err := reader.ReadString('\n')
+	if err != nil {
+		fmt.Println("Error in reading the input:", err)
+		return
+	}
+	instanceType = strings.TrimSpace(output)
 
 	fmt.Println("Enter your Access Key:")
-	fmt.Scan(&accessKey)
+	accessKeyInput, err := readPassword()
+	if err != nil {
+		fmt.Println("Error reading input:", err)
+		return
+	}
+	accessKey = strings.TrimSpace(accessKeyInput)
 
-	fmt.Println("Enter Secret Key:")
-	fmt.Scan(&secretKey)
+	// Get secret key
+	fmt.Println("Enter your Secret Key:")
+	secretKeyInput, err := readPassword()
+	if err != nil {
+		fmt.Println("Error reading input:", err)
+		return
+	}
+	secretKey = strings.TrimSpace(secretKeyInput)
 
 	// Initialize AWS session
 	awsSession, err := session.NewSession(&aws.Config{
@@ -58,7 +101,7 @@ func createEC2Instance(cmd *cobra.Command, args []string) {
 
 	// Specifying  details
 	runInput := &ec2.RunInstancesInput{
-		ImageId:      aws.String("ami-0a21e01face015dd9"),
+		ImageId:      aws.String("ami-04b70fa74e45c3917"),
 		InstanceType: aws.String(instanceType),
 		MinCount:     aws.Int64(1),
 		MaxCount:     aws.Int64(1),

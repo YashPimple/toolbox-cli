@@ -46,7 +46,7 @@ func init() {
 	rootCmd.AddCommand(info.InfoCmd)
 	rootCmd.AddCommand(net.NetCmd)
 	rootCmd.AddCommand(cluster.CmdCreate)
-	rootCmd.AddCommand(cluster.DeleteCmd)
+	rootCmd.AddCommand(cluster.CmdDelete)
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.Toolbox.yaml)")
 
