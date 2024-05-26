@@ -1,6 +1,6 @@
 # Toolbox
 
-Toolbox is a command-line interface (CLI) tool written in Go. It leverages the power of Cobra, a CLI library for Go, to offer a seamless user experience.
+Toolbox is a command-line interface (CLI) tool written in Go. It leverages the power of Cobra, a CLI library for Go.
 
 ## Overview
 <p align="center">
